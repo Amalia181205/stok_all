@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "780395595083",
+    "project_id": "stokall",
+    "storage_bucket": "stokall.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780395595083:android:c628766736bd9f76c114ce",
+        "android_client_info": {
+          "package_name": "com.example.stok_all"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780395595083-co8u9439m8q7mgrql1ohi1lqunnnvc5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stok_all",
+            "certificate_hash": "4d7c4e49d7a11b8a193edbbee55802bc57e986cb"
+          }
+        },
+        {
+          "client_id": "780395595083-lddfh8ikf1krh1ev7pehlhp2oggbotvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_ncuzGnCa9sqN5jXUyOD8EGfELyqOjHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780395595083-lddfh8ikf1krh1ev7pehlhp2oggbotvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
