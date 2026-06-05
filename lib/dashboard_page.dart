@@ -132,7 +132,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   SizedBox(width: 8),
 
                   Text(
-                    "stokAll",
+                    "StockAll",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -153,7 +153,7 @@ class _DashboardPageState extends State<DashboardPage> {
           const SizedBox(height: 5),
 
           const Text(
-            "Semua sistem sinkron. Stok Anda aman hari ini.",
+            "Semua sistem sinkron, Stok Anda akan mulai aman hari ini.",
             style: TextStyle(color: Colors.grey),
           ),
 

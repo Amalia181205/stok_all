@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'detail_produk.dart';
 
 import 'models/product.dart';
 
@@ -85,7 +86,15 @@ class _ReadProdukState extends State<ReadProduk> {
                       title: Text(p.name),
                       subtitle: Text("Stok: ${p.stock}"),
                       trailing: Text("Rp ${p.price.toInt()}"),
-                    //  Text("Rp ${p.price}"),
+
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailProduk(product: p),
+                          ),
+                        );
+                      },
                     ),
                   );
                 },
