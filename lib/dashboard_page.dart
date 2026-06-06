@@ -150,11 +150,48 @@ class _DashboardPageState extends State<DashboardPage> {
 
           const SizedBox(height: 25),
 
-          /// SAPAAN
-          Text(
-            "Hallo, $name",
-            style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              color: const Color(0xff4B2A21),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 28,
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, color: Color(0xff4B2A21), size: 30),
+                ),
+
+                const SizedBox(width: 15),
+
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Selamat Datang",
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      ),
+
+                      Text(
+                        name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // const Icon(Icons.verified, color: Colors.greenAccent),
+              ],
+            ),
           ),
+
 
           const SizedBox(height: 5),
 
