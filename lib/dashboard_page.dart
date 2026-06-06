@@ -63,8 +63,14 @@ class _DashboardPageState extends State<DashboardPage> {
         final decoded = jsonDecode(response.body);
 
         if (decoded is List) {
-          products = decoded.map<Product>((e) => Product.fromJson(e)).toList();
-          context.read<ProductProvider>().setTotalProduk(products.length);
+          final data = decoded
+              .map<Product>((e) => Product.fromJson(e))
+              .toList();
+
+          products = data;
+
+          context.read<ProductProvider>().setProducts(data);
+
         } else {
           products = [];
         }
@@ -226,7 +232,6 @@ class _DashboardPageState extends State<DashboardPage> {
                 const SizedBox(height: 20),
 
                 Text(
-                  // "${products.length}"
                   "${context.watch<ProductProvider>().totalProduk}",
                   style: const TextStyle(
                     fontSize: 40,
@@ -237,6 +242,14 @@ class _DashboardPageState extends State<DashboardPage> {
                 const Text(
                   "Produk Tersedia",
                   style: TextStyle(color: Colors.grey),
+                ),
+
+                Text(
+                  "Produk Menipis : ${context.watch<ProductProvider>().lowStockProducts.length}",
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
 
                 const SizedBox(height: 20),
