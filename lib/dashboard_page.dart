@@ -17,6 +17,9 @@ import 'package:provider/provider.dart';
 import 'providers/product_provider.dart';
 import 'providers/auth_provider.dart';
 
+import 'services/notification_service.dart';
+import 'services/api_service.dart';
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -36,6 +39,22 @@ class _DashboardPageState extends State<DashboardPage> {
     super.initState();
     getData();
     getProducts();
+
+    registerFcm();
+  }
+
+  Future<void> registerFcm() async {
+    try {
+      final token = await NotificationService.getToken();
+
+      if (token != null) {
+        await ApiService.registerToken(userId: 'user_001', fcmToken: token);
+
+        debugPrint("FCM Registered: $token");
+      }
+    } catch (e) {
+      debugPrint("FCM Error: $e");
+    }
   }
 
   // =======================
