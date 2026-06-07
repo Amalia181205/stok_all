@@ -44,4 +44,38 @@ class ApiService {
       return {'error': e.toString()};
     }
   }
+
+  // ─────────────────────────────
+  // 🟠 SHOPEE PRODUCT LIST
+  // ─────────────────────────────
+  static Future<Map<String, dynamic>> getShopeeProducts({
+    required String token,
+  }) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$_baseUrl/shopee/product.php?token=$token'),
+      );
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      return {'error': e.toString()};
+    }
+  }
+
+  // ─────────────────────────────
+  // 🟠 SHOPEE ORDER LIST
+  // ─────────────────────────────
+  static Future<Map<String, dynamic>> getShopeeOrders({
+    required String token,
+  }) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$_baseUrl/shopee/order.php?token=$token'),
+      );
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      return {'error': e.toString()};
+    }
+  }
 }
