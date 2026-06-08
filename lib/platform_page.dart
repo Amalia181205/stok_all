@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'services/api_service.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 class PlatformPage extends StatefulWidget {
   const PlatformPage({super.key});
 
@@ -28,6 +30,14 @@ class _PlatformPageState extends State<PlatformPage> {
     setState(() => loading = false);
   }
 
+Future<void> openShopeeSeller() async {
+    final url = Uri.parse("https://shopee.co.id/shop/123456789");
+
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      throw "Tidak bisa membuka Shopee";
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -43,7 +53,7 @@ class _PlatformPageState extends State<PlatformPage> {
         backgroundColor: const Color(0xffF7F3F0),
         elevation: 0,
         title: const Text(
-          "stockAll",
+          "StockAll",
           style: TextStyle(color: Colors.brown, fontWeight: FontWeight.bold),
         ),
       ),
@@ -69,18 +79,22 @@ class _PlatformPageState extends State<PlatformPage> {
 
             const SizedBox(height: 20),
 
-            /// 🔥 SHOPEE CARD REAL
+            ///  SHOPEE CARD REAL
+
             _platformCard(
               icon: Icons.shopping_bag,
               title: "Shopee",
               products: "${shopeeProducts.length} Produk",
               connected: shopeeConnected,
-              onTap: fetchShopee,
+              onTap: () {
+                fetchShopee();
+                openShopeeSeller();
+              },
             ),
 
             const SizedBox(height: 16),
 
-            /// 🔥 TOKOPEDIA (DUMMY)
+            /// TOKOPEDIA (DUMMY)
             _platformCard(
               icon: Icons.store,
               title: "Tokopedia",
@@ -106,7 +120,8 @@ class _PlatformPageState extends State<PlatformPage> {
     required VoidCallback onTap,
   }) {
     return GestureDetector(
-      onTap: onTap,
+       onTap: onTap,
+
       child: Container(
         padding: const EdgeInsets.all(16),
 

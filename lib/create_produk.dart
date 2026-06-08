@@ -13,6 +13,8 @@ class _CreateProdukState extends State<CreateProduk> {
   TextEditingController name = TextEditingController();
   TextEditingController stock = TextEditingController();
   TextEditingController price = TextEditingController();
+  TextEditingController shopeeStock = TextEditingController();
+  TextEditingController tokopediaStock = TextEditingController();
   
   Future<void> simpan() async {
     if (name.text.isEmpty || stock.text.isEmpty || price.text.isEmpty) {
@@ -24,7 +26,12 @@ class _CreateProdukState extends State<CreateProduk> {
 
     final res = await http.post(
       Uri.parse("http://192.168.0.107/api_stock/create.php"),
-      body: {"nama_produk": name.text, "stok": stock.text, "harga": price.text,
+      body: {
+        "nama_produk": name.text, 
+        "stok": stock.text, 
+        "harga": price.text,
+        "shopee_stock": shopeeStock.text.isEmpty ? "0" : shopeeStock.text,
+        "tokopedia_stock": tokopediaStock.text.isEmpty ? "0" : tokopediaStock.text,
       },
     );
 
@@ -129,6 +136,34 @@ class _CreateProdukState extends State<CreateProduk> {
                 decoration: InputDecoration(
                   labelText: "Harga Produk",
                   prefixIcon: const Icon(Icons.payments_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              TextField(
+                controller: shopeeStock,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Stok Shopee",
+                  prefixIcon: const Icon(Icons.shopping_bag),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              TextField(
+                controller: tokopediaStock,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Stok Tokopedia",
+                  prefixIcon: const Icon(Icons.store),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),

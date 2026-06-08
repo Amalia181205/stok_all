@@ -110,7 +110,8 @@ class _ReadProdukState extends State<ReadProduk> {
                         ),
                       ],
                     ),
-                    child: ListTile(
+                    child: 
+                    ListTile(
                       contentPadding: const EdgeInsets.all(16),
 
                       leading: CircleAvatar(
@@ -132,22 +133,45 @@ class _ReadProdukState extends State<ReadProduk> {
                         ),
                       ),
 
-                      subtitle: Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.storage,
-                              size: 16,
-                              color: Colors.grey,
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Stok : ${p.stock}"),
+
+                          const SizedBox(height: 4),
+
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.shopping_bag_outlined,
+                                size: 16,
+                                color: Colors.orange,
+                              ),
+                              const SizedBox(width: 4),
+                              Text("Shopee : ${p.shopeeStock}"),
+                            ],
+                          ),
+
+                          const SizedBox(height: 4),
+
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.store_outlined,
+                                size: 16,
+                                color: Colors.green,
+                              ),
+                              const SizedBox(width: 4),
+                              Text("Tokopedia : ${p.tokopediaStock}"),
+                            ],
+                          ),
+
+                          if (p.stock <= 5)
+                            const Text(
+                              " Stok menipis",
+                              style: TextStyle(color: Colors.red),
                             ),
-                            const SizedBox(width: 5),
-                            Text(
-                              "Stok : ${p.stock}",
-                              style: const TextStyle(color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                        ],
                       ),
 
                       trailing: Column(

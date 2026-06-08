@@ -385,9 +385,6 @@ class _DashboardPageState extends State<DashboardPage> {
                               borderRadius: BorderRadius.circular(16),
                             ),
 
-                            // child: ListTile(
-                            //   contentPadding: const EdgeInsets.all(14),
-
                             child: ListTile(
                               isThreeLine: true,
                               contentPadding: const EdgeInsets.all(14),
@@ -416,6 +413,34 @@ class _DashboardPageState extends State<DashboardPage> {
                                   ),
 
                                   const SizedBox(height: 4),
+
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 16,
+                                        color: Colors.orange,
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text("Shopee : ${product.shopeeStock}"),
+                                    ],
+                                  ),
+
+                                  const SizedBox(height: 4),
+
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.store_outlined,
+                                        size: 16,
+                                        color: Colors.blue,
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        "Tokopedia : ${product.tokopediaStock}",
+                                      ),
+                                    ],
+                                  ),
 
                                   Text(
                                      "Rp. ${product.price.toInt()}",

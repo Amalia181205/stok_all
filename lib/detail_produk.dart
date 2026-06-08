@@ -84,10 +84,35 @@ class DetailProduk extends StatelessWidget {
                   const SizedBox(height: 15),
 
                   detailItem(
+                    Icons.shopping_bag,
+                    "Stok Shopee",
+                    "${product.shopeeStock}",
+                  ),
+
+                  const SizedBox(height: 15),
+
+                  detailItem(
+                    Icons.store,
+                    "Stok Tokopedia",
+                    "${product.tokopediaStock}",
+                  ),
+
+                  const SizedBox(height: 15),
+
+                  detailItem(
                     Icons.payments,
                     "Harga Produk",
                     "Rp ${product.price.toInt()}"
                   ),
+
+                  const SizedBox(height: 15),
+
+                  detailItem(
+                    Icons.warning,
+                    "Status Stok",
+                    product.stock <= 5 ? "Menipis" : "Aman",
+                  ),
+
                 ],
               ),
             ),

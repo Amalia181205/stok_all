@@ -16,6 +16,8 @@ class _EditProdukState extends State<EditProduk> {
   late TextEditingController name;
   late TextEditingController stock;
   late TextEditingController price;
+  late TextEditingController shopee;
+  late TextEditingController tokopedia;
   
   @override
   void initState() {
@@ -23,6 +25,10 @@ class _EditProdukState extends State<EditProduk> {
     name = TextEditingController(text: widget.product.name);
     stock = TextEditingController(text: widget.product.stock.toString());
     price = TextEditingController(text: widget.product.price.toStringAsFixed(0),);
+
+    shopee = TextEditingController(text: widget.product.shopeeStock.toString(),);
+
+    tokopedia = TextEditingController(text: widget.product.tokopediaStock.toString(),);
   }
 
   Future<void> update() async {
@@ -35,6 +41,8 @@ class _EditProdukState extends State<EditProduk> {
         "nama_produk": name.text,
         "stok": stock.text,
         "harga": price.text,
+        "shopee_stock": shopee.text,
+        "tokopedia_stock": tokopedia.text,
       },
     );
 
@@ -137,7 +145,35 @@ Widget build(BuildContext context) {
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 18),
+
+            TextField(
+                controller: shopee,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Stok Shopee",
+                  prefixIcon: const Icon(Icons.shopping_bag),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              TextField(
+                controller: tokopedia,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Stok Tokopedia",
+                  prefixIcon: const Icon(Icons.store),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 30),
 
             SizedBox(
               width: double.infinity,
