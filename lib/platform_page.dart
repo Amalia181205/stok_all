@@ -16,7 +16,10 @@ class _PlatformPageState extends State<PlatformPage> {
 
   List shopeeProducts = [];
 
-  final token = "ISI_TOKEN_SHOPEE";
+  bool tokopediaConnected = false;
+  List tokopediaProducts = [];
+
+  final token = "ISI_TOKEN_SHOPEE"; // tidak bisa karena harus daftra dan perusahaan resmi ntuk mendapai API platform resmi
 
   Future<void> fetchShopee() async {
     setState(() => loading = true);
@@ -30,12 +33,17 @@ class _PlatformPageState extends State<PlatformPage> {
     setState(() => loading = false);
   }
 
-Future<void> openShopeeSeller() async {
+ Future<void> openShopeeSeller() async {
     final url = Uri.parse("https://shopee.co.id/shop/123456789");
 
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       throw "Tidak bisa membuka Shopee";
     }
+  } 
+
+  Future<void> openTokopediaSeller() async {
+    final url = Uri.parse("https://seller.tokopedia.com/home");
+    await launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   @override
@@ -94,18 +102,17 @@ Future<void> openShopeeSeller() async {
 
             const SizedBox(height: 16),
 
-            /// TOKOPEDIA (DUMMY)
+            // TOKOPEDIA 
             _platformCard(
               icon: Icons.store,
               title: "Tokopedia",
-              products: "0 Produk",
-              connected: false,
+              products: "${tokopediaProducts.length} Produk",
+              connected: tokopediaConnected,
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Belum terhubung API")),
-                );
+                openTokopediaSeller();
               },
             ),
+
           ],
         ),
       ),
@@ -179,7 +186,7 @@ Future<void> openShopeeSeller() async {
             const SizedBox(height: 10),
 
             const Text(
-              "Tap untuk sync / refresh data",
+              "Tap untuk masuk ke platform",
               style: TextStyle(fontSize: 12, color: Colors.grey),
             ),
           ],
