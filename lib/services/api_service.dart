@@ -46,7 +46,7 @@ class ApiService {
   }
 
   // ─────────────────────────────
-  // 🟠 SHOPEE PRODUCT LIST
+  //  SHOPEE PRODUCT LIST
   // ─────────────────────────────
   static Future<Map<String, dynamic>> getShopeeProducts({
     required String token,
@@ -63,7 +63,7 @@ class ApiService {
   }
 
   // ─────────────────────────────
-  // 🟠 SHOPEE ORDER LIST
+  //  SHOPEE ORDER LIST
   // ─────────────────────────────
   static Future<Map<String, dynamic>> getShopeeOrders({
     required String token,
